@@ -9,23 +9,6 @@ class App extends Component {
     this.loadBlockchainDataGG()
   }
 
-  // async loadBlockchainData() {
-  //   const web3 = new Web3(Web3.givenProvider || "http://localhost:7545")
-  //   const accounts = await web3.eth.getAccounts()
-  //   this.setState({ account: accounts[0] })
-  //   const todoList = new web3.eth.Contract(TODO_LIST_ABI, TODO_LIST_ADDRESS)
-  //   this.setState({ todoList })
-  //   const taskCount = await todoList.methods.taskCount().call()
-  //   this.setState({ taskCount })
-  //   for (var i = 1; i <= taskCount; i++) {
-  //     const task = await todoList.methods.tasks(i).call()
-  //     this.setState({
-  //       tasks: [...this.state.tasks, task]
-  //     })
-  //   }
-  //   this.setState({ loading: false })
-  // }
-
   async loadBlockchainDataGG() {
 
     // connect to Account
