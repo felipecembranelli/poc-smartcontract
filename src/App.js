@@ -1,8 +1,21 @@
 import React, { Component } from 'react'
 import Web3 from 'web3'
-import './App.css'
+
+//import Jumbotron from 'react-bootstrap/Jumbotron';
+//import Toast from 'react-bootstrap/Toast';
+import Container from 'react-bootstrap/Container';
+import Navbar from 'react-bootstrap/Navbar'
+import Nav from 'react-bootstrap/Nav'
+import { Accordion } from "react-bootstrap";
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
+//import './App.css'
+//import 'bootstrap/dist/css/bootstrap.css';
+import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
 import { ABI_GG, ADDRESS_GG } from './contract/ABI-GoodGhostingWhitelisted'
 import { DAI, DAI_ADDRESS } from './contract/ABI-dai'
+import logo from './img/metamask.svg'; // with import
 
 class App extends Component {
   componentWillMount() {
@@ -42,12 +55,13 @@ class App extends Component {
 
     // Connect to GG contract
     const goodGhostingWhitelistedContract = new web3.eth.Contract(ABI_GG, ADDRESS_GG)
-    this.setState({ goodGhostingWhitelistedContract })
+    this.setState({ goodGhostingWhitelistedContract } )
 
     // Get number of players
     const numberOfPlayers = await goodGhostingWhitelistedContract.methods.getNumberOfPlayers().call()
     .then(res => {
       console.log('getNumberOfPlayers: ', res);
+      this.setState({ numberOfPlayers })
     })
     .catch(error => {
       console.log(error.message);
@@ -66,36 +80,116 @@ class App extends Component {
 
   }
 
-  constructor(props) {
-    super(props)
-    this.state = {
-      account: '',
-      loading: true
-    }
-  }
+  // constructor(props) {
+  //   super(props)
+  //   this.state = {
+  //     account: '',
+  //     loading: true
+  //   }
+  // }
 
   render() {
     return (
-      <div>
-        <nav className="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
-          <a className="navbar-brand col-sm-3 col-md-2 mr-0" href="" target="_blank">POC Smart Contract</a>
-          <ul className="navbar-nav px-3">
-            <li className="nav-item text-nowrap d-none d-sm-none d-sm-block">
-              <small><a className="nav-link" href="#"><span id="account"></span></a></small>
-            </li>
-          </ul>
-        </nav>
-        <div className="container-fluid">
-          <div className="row">
-            <main role="main" className="col-lg-12 d-flex justify-content-center">
-              { this.state.loading
-                ? <div id="loader" className="text-center"><p className="text-center">Loading...</p></div>
-                : <div id="myAccount" className="text-center"><p className="text-center">Account: {this.state.account}</p></div>
-              }
-            </main>
-          </div>
-        </div>
-      </div>
+<Container fluid>
+<Row>
+<Col>
+
+<>
+ 
+  <Navbar bg="dark" variant="dark" expand="lg">
+    <Container>
+      <Navbar.Brand href="#home">
+        <img
+          alt=""
+          src={logo}
+          width="60"
+          height="60"
+          className="d-inline-block align-middle"
+        />{' '}
+      POC Smartcontract
+      </Navbar.Brand>
+    </Container>
+  </Navbar>
+</>
+
+
+      
+</Col>   
+</Row>
+
+<Row><Col><br></br></Col></Row>
+
+<Row>
+<Col>
+<Card>
+  <Card.Header as="h5">My Wallet</Card.Header>
+  <Card.Body>
+    <Card.Title>Special title treatment</Card.Title>
+    <Card.Text>
+      With supporting text below as a natural lead-in to additional content.
+      <p>Network ID: <span id="networkId"></span></p>
+                <p>Chain ID: <span id="chainId"></span></p>
+                <p>Account: <span id="accountId"></span></p>
+                <p>Balance: <span id="balance"></span></p>
+    </Card.Text>
+    <Button variant="primary">Connect</Button>
+  </Card.Body>
+</Card>
+</Col>
+<Col><Card>
+  <Card.Header as="h5">Game Info</Card.Header>
+  <Card.Body>
+    <Card.Title>Special title treatment</Card.Title>
+    <Card.Text>
+      With supporting text below as a natural lead-in to additional content.
+      <p>Network ID: <span id="networkId"></span></p>
+                <p>Number of Players: <span id="chainId"></span></p>
+                <p>DAI Token: <span id="accountId"></span></p>
+                <p>Total Principal: <span id="balance"></span></p>
+                <p>Game Status: <span id="balance"></span></p>
+    </Card.Text>
+    <p><Button variant="primary">Join Game</Button></p>
+    <p><Button variant="primary">Early Withdraw</Button></p>
+  </Card.Body>
+</Card></Col>
+</Row>
+  {/* <Row>
+    <Col>
+      <Card border="primary" style={{ width: '50%' }}>
+        <Card.Header>Header</Card.Header>
+        <Card.Body>
+          <Card.Title>Primary Card Title</Card.Title>
+          <Card.Text>
+            Some quick example text to build on the card title and make up the bulk
+            of the card's content.
+          </Card.Text>
+        </Card.Body>
+      </Card>
+      <br />
+      </Col>
+      <Col>
+      <Card border="secondary" style={{ width: '50%' }}>
+        <Card.Header>Header</Card.Header>
+        <Card.Body>
+          <Card.Title>Secondary Card Title</Card.Title>
+          <Card.Text>
+            Some quick example text to build on the card title and make up the bulk
+            of the card's content.
+          </Card.Text>
+        </Card.Body>
+      </Card>
+
+      <br />
+      </Col>
+    
+      
+    
+    </Row> */}
+
+
+
+
+</Container>
     );
   }
 }
