@@ -16,6 +16,8 @@ import Card from 'react-bootstrap/Card';
 import { ABI_GG, ADDRESS_GG } from './contract/ABI-GoodGhostingWhitelisted'
 import { DAI, DAI_ADDRESS } from './contract/ABI-dai'
 import logo from './img/metamask.svg'; // with import
+import WalletCard from './WalletCard';
+import GameInfo from './GameInfo';
 
 class App extends Component {
   componentWillMount() {
@@ -124,15 +126,16 @@ class App extends Component {
 <Card>
   <Card.Header as="h5">My Wallet</Card.Header>
   <Card.Body>
-    <Card.Title>Special title treatment</Card.Title>
+    <Card.Title>Connection to MetaMask</Card.Title>
     <Card.Text>
-      With supporting text below as a natural lead-in to additional content.
+    <WalletCard/>
+      {/* With supporting text below as a natural lead-in to additional content.
       <p>Network ID: <span id="networkId"></span></p>
                 <p>Chain ID: <span id="chainId"></span></p>
                 <p>Account: <span id="accountId"></span></p>
-                <p>Balance: <span id="balance"></span></p>
+                <p>Balance: <span id="balance"></span></p> */}
     </Card.Text>
-    <Button variant="primary">Connect</Button>
+    {/* <Button variant="primary">Connect</Button> */}
   </Card.Body>
 </Card>
 </Col>
@@ -141,55 +144,21 @@ class App extends Component {
   <Card.Body>
     <Card.Title>Special title treatment</Card.Title>
     <Card.Text>
-      With supporting text below as a natural lead-in to additional content.
+    <GameInfo/>
+      {/* With supporting text below as a natural lead-in to additional content.
       <p>Network ID: <span id="networkId"></span></p>
                 <p>Number of Players: <span id="chainId"></span></p>
                 <p>DAI Token: <span id="accountId"></span></p>
                 <p>Total Principal: <span id="balance"></span></p>
-                <p>Game Status: <span id="balance"></span></p>
+                <p>Game Status: <span id="balance"></span></p>*/}
     </Card.Text>
-    <p><Button variant="primary">Join Game</Button></p>
-    <p><Button variant="primary">Early Withdraw</Button></p>
+    {/*<p><Button variant="primary">Join Game</Button></p>
+    <p><Button variant="primary">Early Withdraw</Button></p> */}
   </Card.Body>
 </Card></Col>
 </Row>
-  {/* <Row>
-    <Col>
-      <Card border="primary" style={{ width: '50%' }}>
-        <Card.Header>Header</Card.Header>
-        <Card.Body>
-          <Card.Title>Primary Card Title</Card.Title>
-          <Card.Text>
-            Some quick example text to build on the card title and make up the bulk
-            of the card's content.
-          </Card.Text>
-        </Card.Body>
-      </Card>
-      <br />
-      </Col>
-      <Col>
-      <Card border="secondary" style={{ width: '50%' }}>
-        <Card.Header>Header</Card.Header>
-        <Card.Body>
-          <Card.Title>Secondary Card Title</Card.Title>
-          <Card.Text>
-            Some quick example text to build on the card title and make up the bulk
-            of the card's content.
-          </Card.Text>
-        </Card.Body>
-      </Card>
-
-      <br />
-      </Col>
-    
-      
-    
-    </Row> */}
-
-
-
-
 </Container>
+
     );
   }
 }
